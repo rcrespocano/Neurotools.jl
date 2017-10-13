@@ -15,15 +15,19 @@ function parse_commandline()
         "--bioelectrode"
             help = "Bio electrode."
             required = true
+            arg_type = Int
         "--biounit"
             help = "Bio unit."
             required = true
+            arg_type = Int
         "--simcell"
             help = "Simulated cell."
             required = true
+            arg_type = Int
         "--simtype"
             help = "Simulated type."
             required = true
+            arg_type = Int
     end
 
     return parse_args(s)
@@ -35,12 +39,6 @@ function plot_spike_rasters(biodatafile, simdatafile, bio_electrode, bio_unit, s
     simdata = readtable(simdatafile)
     biodata = groupby(biodata, [:Electrode, :Unit])
     simdata = groupby(simdata, [:Cell, :Type])
-
-    # Compare
-    bio_electrode = 31
-    bio_unit = 1
-    sim_cell = 6
-    sim_type = 1
 
     # Get spikes of bio cell
     biocellspikes = []
