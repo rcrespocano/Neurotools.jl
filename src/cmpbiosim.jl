@@ -48,6 +48,7 @@ function plot_spike_rasters(biodatafile, simdatafile, bio_electrode, bio_unit, s
             break
         end
     end
+    println("Bio cell spikes: ", length(biocellspikes))
 
     # Get spikes of simulated cell
     simcellspikes = []
@@ -57,10 +58,12 @@ function plot_spike_rasters(biodatafile, simdatafile, bio_electrode, bio_unit, s
             break
         end
     end
+    println("Sim cell spikes: ", length(simcellspikes))
 
     # Plot
     scatter(biocellspikes, ones(length(biocellspikes)) + 0.0, s=3)
     scatter(simcellspikes, ones(length(simcellspikes)) + 0.1, s=3)
+    scatter(x=0, y=2, s=1)
     show()
 end
 
